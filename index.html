@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRIADA - Coming Soon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Reset & Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            color: #2b2b2b;
+            overflow: hidden;
+        }
+
+        /* Set your custom clothing pattern background image */
+        .bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('background.png');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        /* Subtle overlay to soften the pattern and maximize text contrast */
+        .bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(247, 246, 240, 0.4); 
+        }
+
+        /* Layout Container */
+        .wrapper {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px 60px;
+            z-index: 1;
+        }
+
+        /* Navigation Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        /* Decorative bracket styling around nav items and countdown */
+        .bracket-box {
+            position: relative;
+            padding: 10px 15px;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .bracket-box::before, .bracket-box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            border-color: rgba(0, 0, 0, 0.2);
+            border-style: solid;
+        }
+
+        .bracket-box::before {
+            left: 0;
+            border-width: 1px 0 1px 1px;
+        }
+
+        .bracket-box::after {
+            right: 0;
+            border-width: 1px 1px 1px 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #000;
+        }
+
+        .nav-divider {
+            color: rgba(0, 0, 0, 0.2);
+            font-size: 0.8rem;
+        }
+
+        /* Brand Logo */
+        .logo {
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .logo-icon {
+            width: 28px;
+            height: auto;
+            margin-bottom: 5px;
+            opacity: 0.9;
+        }
+
+        .logo h1 {
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            text-indent: 0.4em; 
+        }
+
+        /* Countdown */
+        .countdown {
+            font-weight: 300;
+            color: #444;
+        }
+
+        .countdown span {
+            font-weight: 500;
+            color: #000;
+            font-size: 1.1rem;
+        }
+
+        /* Main Content */
+        main {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        main h2 {
+            font-size: 3.2rem;
+            font-weight: 200;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            color: #000;
+            text-indent: 0.25em;
+        }
+
+        main p {
+            font-size: 0.9rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: #444;
+            letter-spacing: 0.05em;
+            margin-bottom: 35px;
+        }
+
+        /* Button styling */
+        .btn-notify {
+            background-color: #111111;
+            color: #ffffff;
+            border: none;
+            padding: 14px 45px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            text-indent: 0.25em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn-notify:hover {
+            background-color: #333333;
+        }
+
+        .btn-notify:active {
+            transform: scale(0.98);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            font-size: 0.65rem;
+            letter-spacing: 0.05em;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        footer a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .social-icons {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            color: #444;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #000;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .wrapper {
+                padding: 30px 20px;
+            }
+            header {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .logo {
+                position: relative;
+                left: 0;
+                transform: none;
+                order: -1;
+            }
+            main h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-container">
+        <div class="bg-overlay"></div>
+    </div>
+
+    <div class="wrapper">
+        
+        <header>
+            <div class="bracket-box nav-links">
+                <a href="#about">About</a>
+                <span class="nav-divider">|</span>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 10 L85 70 L15 70 Z" fill="none" stroke="#000" stroke-width="4" stroke-linejoin="round"/>
+                    <path d="M35 44 L45 52 L60 36" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h1>Triada</h1>
+            </div>
+
+            <div class="bracket-box countdown">
+                <span>35</span> Days Left
+            </div>
+        </header>
+
+        <main>
+            <h2>Coming Soon</h2>
+            <p>We're currently working on creating something fantastic.<br>We'll be here soon, subscribe to be notified.</p>
+            <button class="btn-notify" onclick="alert('Thank you! We will notify you soon.')">Notify Me</button>
+        </main>
+
+        <footer>
+            <p>Website by Infostyle<br>&copy; 2025 All Rights Reserved.</p>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Google Plus"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
