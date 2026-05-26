@@ -266,7 +266,7 @@
             </div>
 
             <div class="bracket-box countdown">
-                <span>40</span> Days Left
+                <span id="days">40</span> Days Left
             </div>
         </header>
 
@@ -287,6 +287,21 @@
         </footer>
 
     </div>
+<script>
+    // Countdown Example
+    let days = 35;
 
+    const dayElement = document.getElementById("days");
+
+    setInterval(() => {
+      if(days > 0){
+        days--;
+        dayElement.innerText = days;
+      }
+    }, 86400000);
+
+    // Button Action
+    
+  </script>
 </body>
 </html>
