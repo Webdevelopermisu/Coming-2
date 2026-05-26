@@ -7,8 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" />
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         /* Reset & Base Styles */
         * {
@@ -21,7 +20,7 @@
             height: 100%;
             font-family: 'Montserrat', sans-serif;
             color: #2b2b2b;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         /* Set your custom clothing pattern background image */
@@ -50,7 +49,7 @@
         /* Layout Container */
         .wrapper {
             position: relative;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -206,6 +205,7 @@
             letter-spacing: 0.05em;
             color: #555;
             line-height: 1.8;
+            z-index:2;
         }
 
         footer a {
@@ -272,7 +272,7 @@
 
             <div class="bracket-box countdown">
                 <span id="days">00</span>-
-                <span id="hours">00<</span>-
+                <span id="hours">00</span>-
                 <span id="minutes">00</span>-
                 <span id="seconds">00</span><h6>Days Left</h6>
             </div>
@@ -320,7 +320,7 @@
       // When countdown ends
       if (distance < 0) {
         clearInterval(interval);
-        document.querySelector(".timer").innerHTML = "<h2>Time's Up!</h2>";
+        document.querySelector(".countdown").innerHTML = "<h2>Time's Up!</h2>";
       }
     }
 
