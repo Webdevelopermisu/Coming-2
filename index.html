@@ -265,7 +265,10 @@
             </div>
 
             <div class="bracket-box countdown">
-                <span id="days">40</span> Days Left
+                <span id="days">00</span>:
+                <span id="hours">00</span>:
+                <span id="minutes">00</span>:
+                <span id="seconds">00</span>Days Left
             </div>
         </header>
 
@@ -288,18 +291,37 @@
     </div>
 <script>
     // Countdown Example
-    let days = 35;
 
-    const dayElement = document.getElementById("days");
 
-    setInterval(() => {
-      if(days > 0){
-        days--;
-        dayElement.innerText = days;
+    // Set target date
+    const targetDate = new Date("Jul 6, 2026 00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = seconds;
+
+      // When countdown ends
+      if (distance < 0) {
+        clearInterval(interval);
+        document.querySelector(".timer").innerHTML = "<h2>Time's Up!</h2>";
       }
-    }, 86400000);
+    }
 
-    // Button Action
+    updateCountdown();
+
+    const interval = setInterval(updateCountdown, 1000);
+  
+    // Button Ac
     
   </script>
 </body>
