@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact Form</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+<!-- Left Image Section -->
+<div class="left-section">
+<img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1200&auto=format&fit=crop" alt="Contact">
+</div>
+<!-- Right Form Section -->
+<div class="right-section">
+<h1>Contact Us</h1>
+<form id="contactForm" action="https://formspree.io/f/mkoekzeg" method="POST">
+<label>Name <span>*</span></label>
+<div class="name-box">
+<div>
+<input type="text" name="name" required>
+<small>First</small>
+</div>
+<div>
+<input type="text" name="name" required>
+<small>Last</small>
+</div>
+</div>
+<label>Email <span>*</span></label>
+<input type="email" name="_replyto" required>
+<label>Leave us a few words <span>*</span></label>
+<textarea name="message" rows="5" required></textarea>
+<button type="submit">SUBMIT</button>
+</form>
+<p id="responseMsg"></p>
+</div>
+</div>
+<script>
+  const form = document.getElementById("contactForm");
+const responseMsg = document.getElementById("responseMsg");
+form.addEventListener("submit", function (e) {
+responseMsg.innerHTML = "Sending message...";
+});
+</script>
+</body>
+</html>
