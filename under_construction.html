@@ -1,39 +1,453 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Under Construction</title>
 
-    <title>Under Construction</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
-        main {
-            width: 100%;
-            height: 100vh;
-            margin: 0;
-        }
+body{
+    font-family: Arial, sans-serif;
+    background:#f3f3f3;
+    overflow-x:hidden;
+}
 
-        main img {
-            width: 100%;
-            height: 100%;
-            
-        }
+/* MAIN SECTION */
 
-        
-    </style>
+.container{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    padding:40px 20px;
+    flex-wrap:wrap;
+}
+
+/* BOARD */
+
+.board{
+    position:relative;
+    z-index:2;
+    animation:float 3s ease-in-out infinite;
+}
+
+.board-row{
+    width:420px;
+    max-width:90vw;
+    height:85px;
+    background:
+    repeating-linear-gradient(
+        45deg,
+        #000 0px,
+        #000 25px,
+        #ffe600 25px,
+        #ffe600 50px
+    );
+    margin:12px 0;
+    border:6px solid #111;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+.board-row h1{
+    background:#111;
+    color:#fff;
+    padding:10px 20px;
+    font-size:38px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+/* POLES */
+
+.pole{
+    position:absolute;
+    width:15px;
+    height:260px;
+    background:#888;
+    bottom:-230px;
+}
+
+.left-pole{
+    left:70px;
+}
+
+.right-pole{
+    right:70px;
+}
+
+/* WORKER */
+
+.worker{
+    position:absolute;
+    width:170px;
+    height:330px;
+}
+
+.worker .head{
+    width:90px;
+    height:90px;
+    background:#fff;
+    border-radius:50%;
+    position:absolute;
+    top:35px;
+    left:40px;
+    z-index:2;
+}
+
+/* HELMET */
+
+.worker .helmet{
+    width:100px;
+    height:45px;
+    background:#ffd400;
+    border-radius:100px 100px 30px 30px;
+    position:absolute;
+    top:10px;
+    left:35px;
+    z-index:3;
+    border-bottom:5px solid #d4aa00;
+}
+
+/* BODY */
+
+.worker .body{
+    width:110px;
+    height:140px;
+    background:#fff;
+    position:absolute;
+    top:110px;
+    left:30px;
+    border-radius:20px;
+}
+
+.worker .vest{
+    position:absolute;
+    width:110px;
+    height:140px;
+    background:
+    linear-gradient(
+        90deg,
+        transparent 0%,
+        transparent 20%,
+        orange 20%,
+        orange 35%,
+        white 35%,
+        white 45%,
+        orange 45%,
+        orange 60%,
+        transparent 60%
+    );
+    border-radius:20px;
+}
+
+/* ARMS */
+
+.arm{
+    width:25px;
+    height:110px;
+    background:#fff;
+    position:absolute;
+    top:120px;
+    border-radius:20px;
+    transform-origin:top center;
+}
+
+.arm.left{
+    left:0;
+    animation:leftArm 1.5s infinite alternate;
+}
+
+.arm.right{
+    right:0;
+    animation:rightArm 1.5s infinite alternate;
+}
+
+/* LEGS */
+
+.leg{
+    width:30px;
+    height:120px;
+    background:#fff;
+    position:absolute;
+    bottom:0;
+    border-radius:20px;
+}
+
+.leg.left{
+    left:50px;
+}
+
+.leg.right{
+    right:50px;
+}
+
+/* JACKHAMMER */
+
+.hammer{
+    width:18px;
+    height:150px;
+    background:#777;
+    position:absolute;
+    left:75px;
+    top:170px;
+    border-radius:10px;
+    animation:hammerMove .15s infinite;
+}
+
+.hammer::before{
+    content:"";
+    width:60px;
+    height:50px;
+    background:#d8a500;
+    position:absolute;
+    top:-20px;
+    left:-20px;
+    border-radius:10px;
+}
+
+/* LEFT WORKER */
+
+.worker-left{
+    left:5%;
+    bottom:50px;
+    animation:bounce 0.3s infinite alternate;
+}
+
+/* RIGHT WORKER */
+
+.worker-right{
+    right:5%;
+    bottom:40px;
+    transform:scale(0.9);
+    animation:typing 1s infinite alternate;
+}
+
+/* LAPTOP */
+
+.laptop{
+    width:90px;
+    height:55px;
+    background:#222;
+    position:absolute;
+    top:190px;
+    left:40px;
+    border-radius:6px;
+}
+
+/* TRAFFIC CONES */
+
+.cone{
+    width:0;
+    height:0;
+    border-left:25px solid transparent;
+    border-right:25px solid transparent;
+    border-bottom:60px solid orange;
+    position:absolute;
+    bottom:20px;
+}
+
+.cone::after{
+    content:"";
+    width:40px;
+    height:10px;
+    background:#fff;
+    position:absolute;
+    left:-20px;
+    top:20px;
+}
+
+.c1{ left:40px; }
+.c2{ left:120px; }
+.c3{ right:130px; }
+.c4{ right:40px; }
+
+/* CRACK */
+
+.crack{
+    position:absolute;
+    width:200px;
+    height:40px;
+    background:#ddd;
+    bottom:20px;
+    clip-path:polygon(
+        0 50%,
+        15% 40%,
+        25% 60%,
+        40% 20%,
+        55% 80%,
+        70% 35%,
+        85% 60%,
+        100% 50%,
+        100% 100%,
+        0 100%
+    );
+}
+
+/* ANIMATIONS */
+
+@keyframes hammerMove{
+    from{ transform:translateY(0); }
+    to{ transform:translateY(8px); }
+}
+
+@keyframes bounce{
+    from{ transform:translateY(0); }
+    to{ transform:translateY(-6px); }
+}
+
+@keyframes float{
+    0%{ transform:translateY(0); }
+    50%{ transform:translateY(-8px); }
+    100%{ transform:translateY(0); }
+}
+
+@keyframes typing{
+    from{ transform:scale(0.9) rotate(-2deg); }
+    to{ transform:scale(0.9) rotate(2deg); }
+}
+
+@keyframes leftArm{
+    from{ transform:rotate(10deg); }
+    to{ transform:rotate(25deg); }
+}
+
+@keyframes rightArm{
+    from{ transform:rotate(-10deg); }
+    to{ transform:rotate(-25deg); }
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .container{
+        flex-direction:column;
+        gap:50px;
+    }
+
+    .worker-left,
+    .worker-right{
+        position:relative;
+        left:auto;
+        right:auto;
+        bottom:auto;
+    }
+
+    .board{
+        order:-1;
+    }
+
+    .pole{
+        display:none;
+    }
+
+    .board-row h1{
+        font-size:28px;
+    }
+}
+
+@media(max-width:500px){
+
+    .board-row{
+        height:70px;
+    }
+
+    .board-row h1{
+        font-size:22px;
+        padding:8px 12px;
+    }
+
+    .worker{
+        transform:scale(.8);
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <main>
-        <img src="under_construction.jpg" alt="Under Construction">
-    </main>
+<div class="container">
+
+    <!-- LEFT WORKER -->
+    <div class="worker worker-left">
+
+        <div class="helmet"></div>
+        <div class="head"></div>
+
+        <div class="arm left"></div>
+        <div class="arm right"></div>
+
+        <div class="body">
+            <div class="vest"></div>
+        </div>
+
+        <div class="leg left"></div>
+        <div class="leg right"></div>
+
+        <div class="hammer"></div>
+    </div>
+
+    <!-- BOARD -->
+    <div class="board">
+
+        <div class="board-row">
+            <h1>WEB PAGE</h1>
+        </div>
+
+        <div class="board-row">
+            <h1>UNDER</h1>
+        </div>
+
+        <div class="board-row">
+            <h1>CONSTRUCTION</h1>
+        </div>
+
+        <div class="pole left-pole"></div>
+        <div class="pole right-pole"></div>
+
+    </div>
+
+    <!-- RIGHT WORKER -->
+    <div class="worker worker-right">
+
+        <div class="helmet"></div>
+        <div class="head"></div>
+
+        <div class="arm left"></div>
+        <div class="arm right"></div>
+
+        <div class="body">
+            <div class="vest"></div>
+        </div>
+
+        <div class="leg left"></div>
+        <div class="leg right"></div>
+
+        <div class="laptop"></div>
+
+    </div>
+
+    <!-- CONES -->
+    <div class="cone c1"></div>
+    <div class="cone c2"></div>
+    <div class="cone c3"></div>
+    <div class="cone c4"></div>
+
+    <!-- GROUND CRACK -->
+    <div class="crack"></div>
+
+</div>
 
 </body>
 </html>
